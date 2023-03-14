@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>Document</title>
+ <style>
+    *
+    {
+        padding: 0px;
+        margin: 0px;
+    }
+    body
+    {   
+        padding-top: 250px;
+        width:100vw;
+        height:10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: gray;
+    }
+    img{
+        width:30px;
+    }
+    #container
+    {
+        width:200px;
+        height: 40px;
+        position: relative;
+        background-color: rgb(255, 255, 255);
+        border-radius: 50px;
+        box-shadow: 5px 5px 5px black;
+    }
+    #container:hover
+    {
+        background-color: rgb(209, 209, 209);
+    }
+    #button
+    {
+        width: 100%;
+        height: 45px;
+        background-color: transparent;
+        border:none;
+        position: absolute;
+        font-size: 21px;
+        font-weight: bold;
+        left:0px;
+        top:0px;
+    }
+    #arrow
+    {
+        float: right;
+        width:21px;
+        position: absolute;
+        right:10px;
+        top:14px;
+    }
+    #bell
+    {
+        position: relative;
+        left: 5px;
+        top:10px;
+        width:21px;
+    }
+    #subcontainer
+    {
+        position: absolute;
+        top:40px;
+        width:180px;
+        left: 5px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px black;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .subbuttons
+    {
+        height: 60px;
+        background-color: transparent;
+        border: none;
+       font-size: 20px;
+       text-align:left;
+    }
+    .subbuttons:hover{
+        box-shadow: 0px 2px 2px black;
+        border-radius: 2px solid black;
+
+    }
+   .subimg
+   {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+   }
+   #unsub
+   {
+    width: 300px;
+    height: 150px;
+    background-color: rgb(65,65,65);
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black;
+   }
+   #unsubmess
+   {
+    font-size: 18px;
+    color: white;
+    padding-top: 25px;
+    padding-left: 60px;
+    position: absolute;
+    top: 20px;
+   }
+   #cancle
+   {
+    position: absolute;
+    bottom: 20px;
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    left: 30px;
+    border-radius: 100px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    border: none;
+   }
+   #cancle:hover{
+    background-color: gray;
+   }
+   #Unsubbut{
+    position:absolute;
+    bottom:20px;
+    width: 150px;
+    height: 30px;
+    font-size: 20px;
+    right: 20px;
+    border-radius: 100px;
+    background-color: transparent;
+    color:rgb(98,153,255);
+    font-weight: bold;
+    border: none;
+   }
+   #Unsubbut:hover{
+    background-color: rgb(218,227,248);
+   }
+ </style>
+</head>
+<body>
+    <div id="container">
+    <img src="./bell.jpeg" id="bell" style="display: none;">
+    <input type="button" value="Subscribe" id="button" onfocus="subwindow()" onblur="nosubwindow()">
+    <img src="./scrolldown.png" id="arrow" style="display: none;">
+   <div id="subcontainer" style="display: none;">
+    <button class="subbuttons" value="ring" onmousedown="ring()">
+        <img class="subimg" src="./bellringing.jpeg">All</button> 
+    <button class="subbuttons" value="normal" onmousedown="normalbell()">
+        <img class="subimg" src="./bell.jpeg">Personalized</button>
+    <button class="subbuttons" value="bellslash" onmousedown="bellslash()">
+        <img class="subimg" src="./muted.jpeg">None</button>
+    <button class="subbuttons" value="nobell" onmousedown="Unsubscribe()">
+        <img class="subimg" src="./unsubscribed.jpeg">Unsubscribed</button>
+</div>
+   </div>
+   <div id="unsub" style="display: none;">
+    <span id="unsubmess">Unsubscribe for JustKey? </span>
+    <button id="cancle" onmousedown="canclebut()">Cancel</button>
+    <button id="Unsubbut" onmousedown="unsub()">Unsubscribe</button>
+  </div>
+    <script>
+        function subwindow()
+        {
+            var valueFromTheButton=document.getElementById("button").value
+            if(valueFromTheButton=="Subscribe")
+            {
+                document.getElementById("bell").removeAttribute("style")
+                document.getElementById("arrow").removeAttribute("style")
+                document.getElementById("button").setAttribute("value","Subscribed")
+            }
+            else
+            {
+                document.getElementById("subcontainer").removeAttribute("style")
+            }
+        }
+        function nosubwindow()
+        {
+            document.getElementById("subcontainer").setAttribute("style","display:none;")
+        }
+        function ring()
+        {
+            document.getElementById("bell").setAttribute("src","./bellringing.jpeg")
+        }
+        function normalbell()
+        {
+            document.getElementById("bell").setAttribute("src","./bell.jpeg")
+        }
+        function bellslash()
+        {
+            document.getElementById("bell").setAttribute("src","./muted.jpeg")  
+        }
+        function Unsubscribe()
+        {
+            document.getElementById("unsub").removeAttribute("style")
+        }
+        function unsub()
+        {
+            document.getElementById("bell").setAttribute("style","display:none")   
+            document.getElementById("unsub").setAttribute("style","display:none")    
+            document.getElementById("button").setAttribute("value","Subscribe")
+            document.getElementById("arrow").setAttributeS("style","display:none")
+        }
+        function canclebut()
+        {
+            document.getElementById("unsub").setAttribute("style","display:none")
+        }
+   </script>
+</body>
+</html>
